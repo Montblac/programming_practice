@@ -11,16 +11,15 @@ Example:
     Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 """
 
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+def twoSum(self, nums: List[int], target: int) -> List[int]:
 
-        hashtable = {}
-        result = []
+    hashtable = {}
+    result = []
 
-        for i in range(len(nums)):
-            value = target - nums[i]
-            if value in hashtable:
-                result.append(hashtable[value])
-                result.append(i)
-            hashtable[nums[i]] = i
-        return result
+    for i in range(len(nums)):
+        value = target - nums[i]
+        if value in hashtable:
+            result.append(hashtable[value])
+            result.append(i)
+        hashtable[nums[i]] = i
+    return result

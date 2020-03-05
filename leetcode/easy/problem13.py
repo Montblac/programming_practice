@@ -13,7 +13,7 @@ Task:
         C             100
         D             500
         M             1000
-        
+
     For example, two is written as II in Roman numeral, just two one's added
     together. Twelve is written as, XII, which is simply X + II. The number
     twenty seven is written as XXVII, which is XX + V + II.
@@ -30,42 +30,42 @@ Task:
     Given a roman numeral, convert it to an integer. Input is guaranteed to be
     within the range from 1 to 3999.
 
-Example 1:
-    Input: "III"
-    Output: 3
+Examples:
+    Example 1:
+        Input: "III"
+        Output: 3
 
-Example 2:
-    Input: "IV"
-    Output: 4
+    Example 2:
+        Input: "IV"
+        Output: 4
 
-Example 5:
-    Input: "MCMXCIV"
-    Output: 1994
-    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+    Example 5:
+        Input: "MCMXCIV"
+        Output: 1994
+        Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 """
 
-class Solution:
-    def romanToInt(self, s: str) -> int:
-        table = {
-            'I': 1,
-            'V': 5,
-            'X': 10,
-            'L': 50,
-            'C': 100,
-            'D': 500,
-            'M': 1000
-        }
+def romanToInt(s: str) -> int:
+    table = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
 
-        result = 0
-        prev = 0
-        for idx, val in enumerate(s):
-            curr = table[val]
-            if idx > 0:
-                if curr <= prev:
-                    result += curr
-                else:
-                    result = result + curr - prev * 2
-            else:
+    result = 0
+    prev = 0
+    for idx, val in enumerate(s):
+        curr = table[val]
+        if idx > 0:
+            if curr <= prev:
                 result += curr
-            prev = curr
-        return result
+            else:
+                result = result + curr - prev * 2
+        else:
+            result += curr
+        prev = curr
+    return result

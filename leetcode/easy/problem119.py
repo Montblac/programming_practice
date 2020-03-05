@@ -13,37 +13,34 @@ Follow up:
     Could you optimize your algorithm to use only O(k) extra space?
 """
 
-class Solution:
-    def getRow(self, rowIndex: int) -> List[int]:
-        """ Solution 1
-        """
-        if rowIndex <= 0:
-            return [1]
+def getRow(self, rowIndex: int) -> List[int]:
+    """ Solution 1
+    """
+    if rowIndex <= 0:
+        return [1]
 
-        result = [1]
-        for row_num in range(1, rowIndex + 1):
-            result.append(1)
+    # Solution 1
+    result = [1]
+    for row_num in range(1, rowIndex + 1):
+        result.append(1)
 
-            for col in range(row_num-1, 0, -1):
-                result[col] = result[col] + result[col-1]
-        return result
+        for col in range(row_num-1, 0, -1):
+            result[col] = result[col] + result[col-1]
 
-    def getRow_B(self, rowIndex: int) -> List[int]:
-        """ Solution 2
-        """
-        if rowIndex <= 0:
-            return [1]
+    # Solution 2
+    '''
+    row = [1]
+    result = []
+    for row_num in range(1, rowIndex + 1):
+        updated_row = [None] * (row_num + 1)
+        updated_row[0], updated_row[-1] = (1, 1)
 
-        row = [1]
-        result = []
-        for row_num in range(1, rowIndex + 1):
-            updated_row = [None] * (row_num + 1)
-            updated_row[0], updated_row[-1] = (1, 1)
+        for col in range(1, row_num):
+            updated_row[col] = row[col-1] + row[col]
+        row = updated_row
 
-            for col in range(1, row_num):
-                updated_row[col] = row[col-1] + row[col]
-            row = updated_row
+        if row_num == rowIndex:
+            result = row
+    '''
 
-            if row_num == rowIndex:
-                result = row
-        return result
+    return result
