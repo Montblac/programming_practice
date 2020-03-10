@@ -30,16 +30,16 @@ def sumEvenGrandparent(root: TreeNode) -> int:
     if not root or (not root.right and not root.left):
         return 0
 
-    def sumChildren(root):
-        if not root or (not root.right and not root.left):
+    def sumChildren(parent):
+        if not parent or (not parent.right and not parent.left):
             return 0
 
-        if not root.right:
-            return root.left.val
-        elif not root.left:
-            return root.right.val
+        if not parent.right:
+            return parent.left.val
+        elif not parent.left:
+            return parent.right.val
         else:
-            return root.left.val + root.right.val
+            return parent.left.val + parent.right.val
 
     if root.val % 2 == 0:
         return sumChildren(root.left) + \
