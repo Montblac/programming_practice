@@ -32,7 +32,7 @@ Constraints:
 #         self.left = None
 #         self.right = None
 
-def bstToGst(self, root: TreeNode) -> TreeNode:
+def bstToGst(root: TreeNode) -> TreeNode:
     if not root:
         return root
 
